@@ -6,18 +6,29 @@ public class PlayerCombatController : MonoBehaviour
 {
     [SerializeField]
     private bool combatEnabled;
+
     [SerializeField]
     private float inputTimer, attack1Radius, attack1Damage;
+
     [SerializeField]
     private Transform attack1HitBoxPos;
+
     [SerializeField]
     private LayerMask whatIsDamageable;
 
-    private bool gotInput, isAttacking, isFirstAttack;
+    private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun, 
+    isArmDestroyed = false;
 
     private float lastInputTime = Mathf.NegativeInfinity;
 
     private float[] attackDetails = new float[2];
+
+    [SerializeField]
+    private Transform arm;
+
+    [SerializeField]
+    private GameObject aim;
+
 
     private Animator anim;
     private PlayerController PC;
@@ -35,18 +46,54 @@ public class PlayerCombatController : MonoBehaviour
     {
         CheckCombatInput();
         CheckAttacks();
+        UpdateAnimations();
     }
 
+    private void UpdateAnimations()
+    {
+        anim.SetBool("GunAttack", isWalkingWithGun);
+    }
     private void CheckCombatInput()
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1))
         {
+            CameraShake.Instance.ShakeCamera(5f, 5f);
             if (combatEnabled)
             {
-                gotInput = true;
-                lastInputTime = Time.time;
+                // gotInput = true;
+                // lastInputTime = Time.time;
             }
         }
+        else if (Input.GetMouseButton(1))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {   
+                isWalkingWithGun = true;
+
+                if (isArmDestroyed)
+                {       
+                    isArmDestroyed = false;
+                }
+            }
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            CheckArmDestroyed();
+            isArmDestroyed = true;
+        }
+    }
+    private void CheckArmDestroyed()
+    {
+        if(isArmDestroyed)
+        {
+            var myNewArm = Instantiate(aim, arm.transform.position, arm.transform.rotation);
+            myNewArm.transform.parent = arm.transform;
+        }
+        else{
+            isWalkingWithGun = false;
+            Destroy(aim);
+            }
     }
     private void CheckAttacks()
     {
@@ -86,30 +133,31 @@ public class PlayerCombatController : MonoBehaviour
     private void FinishAttack1()
     {
         isAttacking = false;
-        anim.SetBool("isAttacking",isAttacking);
-        anim.SetBool("attack1",false);
+        anim.SetBool("isAttacking", isAttacking);
+        anim.SetBool("attack1", false);
     }
     private void Damage(float[] attackDetails)
     {
-        if(!PC.GetDashStatus())
+        if (!PC.GetDashStatus())
         {
             int direction;
             PS.DecreaseHealt(attackDetails[0]);
-        if(attackDetails[1] < transform.position.x)
-        {
-            direction = 1;
-        }
-        else{
-            direction = -1;
+            if (attackDetails[1] < transform.position.x)
+            {
+                direction = 1;
+            }
+            else
+            {
+                direction = -1;
+            }
+
+            PC.Knockback(direction);
         }
 
-        PC.Knockback(direction);
-        }
-        
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attack1HitBoxPos.position,attack1Radius);
-        
+        Gizmos.DrawWireSphere(attack1HitBoxPos.position, attack1Radius);
+
     }
 }

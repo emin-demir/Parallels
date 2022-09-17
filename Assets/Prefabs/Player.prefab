@@ -156,7 +156,7 @@ MonoBehaviour:
   amountOfJumps: 2
   movementSpeed: 5
   jumpforce: 12
-  groundCheckRadius: 0.8
+  groundCheckRadius: 0.5
   wallCheckDistance: 0.65
   wallSlideSpeed: 1
   movementForceInAir: 50
@@ -197,7 +197,7 @@ MonoBehaviour:
   attack1HitBoxPos: {fileID: 9089507065353307625}
   whatIsDamageable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!50 &9089507066385146812
 Rigidbody2D:
   serializedVersion: 4
