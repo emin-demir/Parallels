@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 9089507066385146814}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6124834748556540346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2698441672120303371}
+  m_Layer: 11
+  m_Name: LedgeCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2698441672120303371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124834748556540346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9089507066385146814}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9089507065353307624
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +132,7 @@ Transform:
   - {fileID: 9089507066893317644}
   - {fileID: 9089507065353307625}
   - {fileID: 330307119}
+  - {fileID: 2698441672120303371}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,7 +182,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.125, y: 38.75}
+  m_Size: {x: 4.4189944, y: 2.734375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -168,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35cd0fe6a1d6d64c81ea68404ce594a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealt: 20
+  GameUIScript: {fileID: 0}
   deathChunkParticle: {fileID: 932724624476624567, guid: 9bf579032181474489532b69efe3f9a6, type: 3}
   deathBloodParticle: {fileID: 4318460096445990408, guid: cb65512e1cde05a409eb849ff274015c, type: 3}
 --- !u!114 &9089507066385146808
@@ -187,7 +219,7 @@ MonoBehaviour:
   knockbackSpeed: {x: 10, y: 5}
   amountOfJumps: 2
   movementSpeed: 5
-  jumpforce: 12
+  jumpforce: 20
   groundCheckRadius: 0.5
   wallCheckDistance: 0.65
   wallSlideSpeed: 1
@@ -199,14 +231,19 @@ MonoBehaviour:
   jumpTimerSet: 0.15
   turnTimerSet: 0.1
   wallJumpTimerSet: 0.5
+  ledgeClimbXOffset1: 0
+  ledgeClimbXOffset2: 0
+  ledgeClimbXOffset3: 0
+  ledgeClimbXOffset4: 0
   dashTime: 0.1
   dashSpeed: 50
   distanceBetweenImages: 0.1
-  dashCoolDown: 2.5
+  dashCoolDown: 0.5
   wallHopDirection: {x: 1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
   groundCheck: {fileID: 9089507066658903771}
   wallCheck: {fileID: 9089507066893317644}
+  ledgeCheck: {fileID: 2698441672120303371}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -232,6 +269,9 @@ MonoBehaviour:
     m_Bits: 512
   arm: {fileID: 330307119}
   aim: {fileID: 5814383468454727040, guid: d445c6b431019be47968f45f7da38ad5, type: 3}
+  x: 0
+  y: 0
+  z: 0
 --- !u!50 &9089507066385146812
 Rigidbody2D:
   serializedVersion: 4
@@ -271,7 +311,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.5, y: 2.5}
-    newSize: {x: 13.125, y: 38.75}
+    newSize: {x: 4.4189944, y: 2.734375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -16,8 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsDamageable;
 
-    private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun, 
-    isArmDestroyed;
+    private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun;
 
     private float lastInputTime = Mathf.NegativeInfinity;
 
@@ -36,12 +35,17 @@ public class PlayerCombatController : MonoBehaviour
     private PlayerController PC;
     private PlayerStats PS;
 
+    public float x;
+    public float y;
+    public float z;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("canAttack", combatEnabled);
         PC = GetComponent<PlayerController>();
         PS = GetComponent<PlayerStats>();
+
 
     }
 
@@ -64,23 +68,34 @@ public class PlayerCombatController : MonoBehaviour
             CameraShake.Instance.ShakeCamera(5f, 5f);
             if (combatEnabled)
             {
-                // gotInput = true;
-                // lastInputTime = Time.time;
+                gotInput = true;
+                lastInputTime = Time.time;
             }
         }
 
        if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {   
-            CreateNewArm();
             isWalkingWithGun = true;
-                Debug.Log(transform.rotation.y);
-
-            if(transform.rotation.y == -180)
+            CreateNewArm();
+            if(transform.rotation.y == -1 )
             {
-                var Sr = myNewArm.GetComponentInChildren<SpriteRenderer>();
-                Sr.flipY = true;
+                 Transform[] sprites = myNewArm.GetComponentsInChildren<Transform>();
+                    
+                    sprites[1].position = new Vector3(-0.55f,0.33f,0f) + transform.position;
+                    
+                    sprites[1].rotation = Quaternion.Euler(sprites[1].rotation.x,180,sprites[1].rotation.z);
+                
+                // var Sr = myNewArm.GetComponentInChildren<SpriteRenderer>();
+                // Sr.flipY = true;
             }
-            
+            else{
+                Transform[] sprites = myNewArm.GetComponentsInChildren<Transform>();
+                    
+                    sprites[1].position = new Vector3(0.55f,0.33f,0) + transform.position;
+                    sprites[1].rotation = Quaternion.Euler(sprites[1].rotation.x,0,sprites[1].rotation.z);
+                    
+            }
+
             armCount ++;
         }
         if (Input.GetMouseButtonUp(1))
