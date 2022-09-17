@@ -13,17 +13,25 @@ public class Force : MonoBehaviour
     [SerializeField]
     private GameObject Enemy;
 
+    [SerializeField]
+    private Quaternion a;
+
+    void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        coll_p = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+
+    }
+
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == coll_p)
-        {
-            // Player.
-        }
+    
     }
 
 }

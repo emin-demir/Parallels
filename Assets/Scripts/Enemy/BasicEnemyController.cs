@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
+    [SerializeField]
+    public EnemyShooting ES;
+    private bool Isshoot;
+
     private enum State
     {
         Moving,
@@ -44,7 +48,7 @@ public class BasicEnemyController : MonoBehaviour
         deathChunkParticle,
         deathBloodParticle;
 
-    private float 
+    public float 
         currentHealt,
         KnockbackStartTime;
     
@@ -67,18 +71,19 @@ public class BasicEnemyController : MonoBehaviour
     private GameObject alive;
     private Rigidbody2D aliveRb;
     private Animator aliveAnim;
+
     private void Start()
     {
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
         aliveAnim = alive.GetComponent<Animator>();
-
         currentHealt = maxHealt;
         facingDirection = 1;
     }
 
     private void Update()
     {
+
         switch (currentState)
         {
             case State.Moving:
@@ -90,7 +95,7 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 UpdateDeadState();
                 break;
-        }
+        }   
     }
 
 
@@ -264,4 +269,6 @@ public class BasicEnemyController : MonoBehaviour
         Gizmos.DrawLine(topLeft,botLeft);
 
     }
+
+
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8300043088274519100}
   - component: {fileID: 8300043088274519103}
-  m_Layer: 0
+  - component: {fileID: 1476495622}
+  m_Layer: 7
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1611ea47bc7a46441b7f6764674363dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ES: {fileID: 0}
   groundCheckDistance: 0.7
   wallCheckDistance: 0.1
   movementSpeed: 3
-  maxHealt: 30
+  maxHealt: 50
   KnockbackDuration: 0.1
   lastTouchDamageTime: 0
   touchDamageCooldown: 0.2
@@ -68,6 +70,50 @@ MonoBehaviour:
   hitParticle: {fileID: 5944367461349491457, guid: b912216f59e8b4c46a65e7dd4d542249, type: 3}
   deathChunkParticle: {fileID: 932724624476624567, guid: 9bf579032181474489532b69efe3f9a6, type: 3}
   deathBloodParticle: {fileID: 4318460096445990408, guid: cb65512e1cde05a409eb849ff274015c, type: 3}
+  currentHealt: 0
+  KnockbackStartTime: 0
+  groundDedectionTrigger: {fileID: 210031118, guid: 13d6c49a6c1836a4d808b75ea5c7eabd, type: 3}
+  groundContactFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 128
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  IsOnGround: 0
+--- !u!61 &1476495622
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300043088274519102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12, y: -0.97}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.03, y: 1.36}
+  m_EdgeRadius: 0
 --- !u!1 &8300043088515108195
 GameObject:
   m_ObjectHideFlags: 0

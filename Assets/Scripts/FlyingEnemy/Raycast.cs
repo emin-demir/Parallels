@@ -7,10 +7,10 @@ public class Raycast : MonoBehaviour
     [SerializeField]
     private Transform tr;
     private Transform tr_p;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [SerializeField]
-    private float speed = 0.3f;
+    private float speed;
     [SerializeField]
     private Vector2 start;
     [SerializeField]
@@ -48,14 +48,12 @@ public class Raycast : MonoBehaviour
     
     void Update()
     {
-        UpdateIsOnGround();
         focus();
+        UpdateIsOnGround();
     }
 
     private void focus()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.left) * 5f, Color.red);   
-        RaycastHit2D hit = Physics2D.Raycast(transform.position,transform.TransformDirection(Vector2.left),5f);
         if (IsOnGround == true)
         {
             count++;
@@ -94,6 +92,5 @@ public class Raycast : MonoBehaviour
     private void UpdateIsOnGround()
     {
         IsOnGround = groundDedectionTrigger.OverlapCollider(groundContactFilter, groundHitDedectionResuts) > 0;
-        Debug.Log("oluyor mu" + IsOnGround);
     }
 }
