@@ -22,7 +22,7 @@ public class Force : MonoBehaviour
     {
         if (collision == coll_p)
         {
-            Player.
+            // Player.
         }
     }
 

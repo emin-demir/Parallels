@@ -17,11 +17,14 @@ public class PlayerCombatController : MonoBehaviour
     private LayerMask whatIsDamageable;
 
     private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun, 
-    isArmDestroyed = false;
+    isArmDestroyed;
 
     private float lastInputTime = Mathf.NegativeInfinity;
 
     private float[] attackDetails = new float[2];
+    
+    private int armCount = 0;
+    private GameObject myNewArm; 
 
     [SerializeField]
     private Transform arm;
@@ -65,35 +68,28 @@ public class PlayerCombatController : MonoBehaviour
                 // lastInputTime = Time.time;
             }
         }
-        else if (Input.GetMouseButton(1))
-        {
-            if (Input.GetMouseButtonDown(0))
-            {   
-                isWalkingWithGun = true;
 
-                if (isArmDestroyed)
-                {       
-                    isArmDestroyed = false;
-                }
-            }
+       if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+        {   
+            CreateNewArm();
+            isWalkingWithGun = true;
+            
+            armCount ++;
         }
-        else if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1))
         {
-            CheckArmDestroyed();
-            isArmDestroyed = true;
+            Destroy(myNewArm);
+            isWalkingWithGun = false;
+            armCount = 0;
         }
     }
-    private void CheckArmDestroyed()
+    private void CreateNewArm()
     {
-        if(isArmDestroyed)
+        if(armCount < 1)
         {
-            var myNewArm = Instantiate(aim, arm.transform.position, arm.transform.rotation);
-            myNewArm.transform.parent = arm.transform;
+        myNewArm = Instantiate(aim, arm.transform.position, arm.transform.rotation);
+        myNewArm.transform.parent = arm.transform;
         }
-        else{
-            isWalkingWithGun = false;
-            Destroy(aim);
-            }
     }
     private void CheckAttacks()
     {
