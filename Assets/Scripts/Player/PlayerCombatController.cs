@@ -32,7 +32,6 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private GameObject aim;
 
-
     private Animator anim;
     private PlayerController PC;
     private PlayerStats PS;
@@ -43,6 +42,7 @@ public class PlayerCombatController : MonoBehaviour
         anim.SetBool("canAttack", combatEnabled);
         PC = GetComponent<PlayerController>();
         PS = GetComponent<PlayerStats>();
+
     }
 
     private void Update()
@@ -73,6 +73,13 @@ public class PlayerCombatController : MonoBehaviour
         {   
             CreateNewArm();
             isWalkingWithGun = true;
+                Debug.Log(transform.rotation.y);
+
+            if(transform.rotation.y == -180)
+            {
+                var Sr = myNewArm.GetComponentInChildren<SpriteRenderer>();
+                Sr.flipY = true;
+            }
             
             armCount ++;
         }
@@ -132,6 +139,7 @@ public class PlayerCombatController : MonoBehaviour
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("attack1", false);
     }
+
     private void Damage(float[] attackDetails)
     {
         if (!PC.GetDashStatus())
