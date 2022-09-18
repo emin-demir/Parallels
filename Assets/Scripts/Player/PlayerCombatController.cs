@@ -41,6 +41,7 @@ public class PlayerCombatController : MonoBehaviour
     private PlayerController PC;
     private PlayerStats PS;
 
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -60,7 +61,6 @@ public class PlayerCombatController : MonoBehaviour
     {
         anim.SetBool("GunAttack", isWalkingWithGun);
         anim.SetBool("GunIdle", isWaitingWithGun);
-        
         if(transform.GetComponent<Rigidbody2D>().velocity.x != 0 )
             {
                 isWalkingWithGun = true;

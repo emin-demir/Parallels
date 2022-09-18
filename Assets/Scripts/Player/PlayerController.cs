@@ -240,6 +240,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.velocity.y);
         animator.SetBool("isWallSliding", isWallSliding);
+        animator.SetBool("isDashing", isDashing);
     }
     private void CheckInput()
     {
