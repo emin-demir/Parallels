@@ -16,7 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsDamageable;
 
-    private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun;
+    private bool gotInput, isAttacking, isFirstAttack,isWalkingWithGun,isWaitingWithGun;
 
     private float lastInputTime = Mathf.NegativeInfinity;
 
@@ -59,6 +59,16 @@ public class PlayerCombatController : MonoBehaviour
     private void UpdateAnimations()
     {
         anim.SetBool("GunAttack", isWalkingWithGun);
+        anim.SetBool("GunIdle", isWaitingWithGun);
+        
+        if(transform.GetComponent<Rigidbody2D>().velocity.x != 0 )
+            {
+                isWalkingWithGun = true;
+            }
+            if(transform.GetComponent<Rigidbody2D>().velocity.x == 0 )
+            {
+                isWalkingWithGun = false;
+            }
     }
     private void CheckCombatInput()
     {
@@ -75,8 +85,9 @@ public class PlayerCombatController : MonoBehaviour
 
        if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {   
-            isWalkingWithGun = true;
+            isWaitingWithGun = true;
             CreateNewArm();
+            
             if(transform.rotation.y == -1 )
             {
                  Transform[] sprites = myNewArm.GetComponentsInChildren<Transform>();
@@ -101,7 +112,7 @@ public class PlayerCombatController : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         {
             Destroy(myNewArm);
-            isWalkingWithGun = false;
+            isWaitingWithGun = false;
             armCount = 0;
         }
     }
