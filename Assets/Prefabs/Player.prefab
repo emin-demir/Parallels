@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2698441672120303371
 Transform:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6124834748556540346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.025, y: 1.065, z: 0}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1537103235
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 961748283, guid: 5e9f470def0f39748a22767f5b4d97e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,10 +220,10 @@ MonoBehaviour:
   knockbackSpeed: {x: 10, y: 5}
   amountOfJumps: 2
   amountOfDash: 2
-  movementSpeed: 5
+  movementSpeed: 12
   jumpforce: 20
   groundCheckRadius: 0.3
-  wallCheckDistance: 0.65
+  wallCheckDistance: 0.4
   wallSlideSpeed: 1
   movementForceInAir: 50
   airDragMultiplier: 0.95
@@ -271,7 +271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   arm: {fileID: 330307119}
-  aim: {fileID: 7427899541692753473, guid: fda0a3ad25ff87249ac311c861c019fb, type: 3}
+  aim: {fileID: 7782126876415643603, guid: eef13d2af8b74b74b89ddcb8cb94fe2f, type: 3}
 --- !u!50 &9089507066385146812
 Rigidbody2D:
   serializedVersion: 4
@@ -287,7 +287,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -306,7 +306,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.046572447, y: -0.03512132}
+  m_Offset: {x: 0.023014762, y: -0.03512132}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -317,7 +317,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32817984, y: 2.427191}
+  m_Size: {x: 0.34363937, y: 2.427191}
   m_EdgeRadius: 0
 --- !u!95 &9089507066385146818
 Animator:
@@ -363,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9089507066658903770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.057, y: -1.227, z: 0}
+  m_LocalPosition: {x: 0.058, y: -1.263, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
