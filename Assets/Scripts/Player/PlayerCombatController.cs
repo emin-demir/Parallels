@@ -86,30 +86,10 @@ public class PlayerCombatController : MonoBehaviour
             }
         }
 
-       if (!Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+       if (Input.GetMouseButtonDown(1))
         {   
             isWaitingWithGun = true;
-            CreateNewArm();
-            
-            if(transform.rotation.y == -1 )
-            {
-                 Transform[] sprites = myNewArm.GetComponentsInChildren<Transform>();
-                    
-                    sprites[1].position = new Vector3(-0.55f,0.33f,0f) + transform.position;
-                    
-                    sprites[1].rotation = Quaternion.Euler(sprites[1].rotation.x,180,sprites[1].rotation.z);
-                
-                // var Sr = myNewArm.GetComponentInChildren<SpriteRenderer>();
-                // Sr.flipY = true;
-            }
-            else{
-                Transform[] sprites = myNewArm.GetComponentsInChildren<Transform>();
-                    
-                    sprites[1].position = new Vector3(0.55f,0.33f,0) + transform.position;
-                    sprites[1].rotation = Quaternion.Euler(sprites[1].rotation.x,0,sprites[1].rotation.z);
-                    
-            }
-
+            CreateNewArm();    
             armCount ++;
         }
         if (Input.GetMouseButtonUp(1))

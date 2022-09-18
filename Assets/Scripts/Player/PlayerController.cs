@@ -219,11 +219,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isFacingRight && movementInputDirection < 0)
         {
-            Flip();
+            // Flip();
         }
         else if (!isFacingRight && movementInputDirection > 0)
         {
-            Flip();
+            // Flip();
         }
         if (Mathf.Abs(rb.velocity.x) >= 0.1f)
         {
