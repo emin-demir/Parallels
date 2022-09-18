@@ -86,7 +86,7 @@ public class PlayerCombatController : MonoBehaviour
             }
         }
 
-       if (Input.GetMouseButtonDown(1))
+       if (Input.GetMouseButton(1))
         {   
             isWaitingWithGun = true;
             CreateNewArm();    
