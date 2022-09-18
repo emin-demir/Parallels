@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330307118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.221, y: 0.501, z: 0}
+  m_LocalPosition: {x: -0.2, y: 0.528, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,7 +271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   arm: {fileID: 330307119}
-  aim: {fileID: 5814383468454727040, guid: d445c6b431019be47968f45f7da38ad5, type: 3}
+  aim: {fileID: 7427899541692753473, guid: fda0a3ad25ff87249ac311c861c019fb, type: 3}
 --- !u!50 &9089507066385146812
 Rigidbody2D:
   serializedVersion: 4

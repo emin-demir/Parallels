@@ -18,7 +18,7 @@ public class silahscript : MonoBehaviour
 
     public Animator gunanimator;
 
-    public PlayerController PC;
+    private PlayerController PC;
 
     public GameObject Gun;
 
@@ -42,6 +42,7 @@ public class silahscript : MonoBehaviour
 
     private void Start()
     {
+      PC = GameObject.Find("Player").GetComponent<PlayerController>();
       sr = AimGO.GetComponent<SpriteRenderer>();
       tr = AimGO.GetComponent<Transform>();
 
