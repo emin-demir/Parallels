@@ -25,7 +25,7 @@ public class Trigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         lasttime = Time.time;
-        anim.SetTrigger("Fight2");
+        // anim.SetTrigger("Fight2");
         
 
     }
@@ -36,7 +36,7 @@ public class Trigger : MonoBehaviour
         {
             if (Time.time >= lasttime + cooldown)
             {
-                anim.SetTrigger("Fight2");
+                // anim.SetTrigger("Fight2");
             }
         }
         

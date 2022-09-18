@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    public GameUIScript GameUIScript;
+    private float maxStamina = 100f;
+    private float currentStamina;
+    private float staminaCoolDown = 5f;
+    private float amount = 20;
+
     [SerializeField]
     private bool combatEnabled;
 
@@ -35,18 +41,12 @@ public class PlayerCombatController : MonoBehaviour
     private PlayerController PC;
     private PlayerStats PS;
 
-    public float x;
-    public float y;
-    public float z;
-
     private void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("canAttack", combatEnabled);
         PC = GetComponent<PlayerController>();
         PS = GetComponent<PlayerStats>();
-
-
     }
 
     private void Update()
@@ -72,11 +72,14 @@ public class PlayerCombatController : MonoBehaviour
     }
     private void CheckCombatInput()
     {
-
+        if ((currentStamina == 0 && Time.time > lastInputTime + staminaCoolDown) || Time.time > lastInputTime + staminaCoolDown)
+        {
+            GameUIScript.SetMaxStamina(maxStamina);
+            currentStamina = maxStamina;
+        }
         if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1))
         {
-            CameraShake.Instance.ShakeCamera(5f, 5f);
-            if (combatEnabled)
+            if (combatEnabled && currentStamina >= 0)
             {
                 gotInput = true;
                 lastInputTime = Time.time;
@@ -161,6 +164,8 @@ public class PlayerCombatController : MonoBehaviour
     }
     private void FinishAttack1()
     {
+        currentStamina -= amount;
+        GameUIScript.SetStamina(currentStamina);
         isAttacking = false;
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("attack1", false);

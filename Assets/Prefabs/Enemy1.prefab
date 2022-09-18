@@ -48,7 +48,7 @@ MonoBehaviour:
   groundCheckDistance: 0.7
   wallCheckDistance: 0.1
   movementSpeed: 3
-  maxHealt: 50
+  maxHealt: 100
   KnockbackDuration: 0.1
   lastTouchDamageTime: 0
   touchDamageCooldown: 0.2
