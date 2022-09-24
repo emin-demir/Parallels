@@ -35,10 +35,11 @@ public class GameManager : MonoBehaviour
     }
     private void CheckRespawn()
     {
-        if (Time.time >= respawnTimeStart + 3)
+        if (Time.time >= respawnTimeStart + respawnTime && respawn)
         {
             var playerTemp = Instantiate(player, respawnPoint);
-            Respawn();
+            CVC.m_Follow = playerTemp.transform;
+            respawn = false;
         }
     }
 }
