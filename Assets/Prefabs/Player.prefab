@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &217965611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217965612}
+  m_Layer: 11
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &217965612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217965611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9089507066385146814}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330307118
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +61,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9089507066385146814}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1370476255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370476256}
+  m_Layer: 11
+  m_Name: LedgeCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1370476256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370476255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9089507066385146814}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460105994
 GameObject:
@@ -132,6 +194,8 @@ Transform:
   - {fileID: 9089507065353307625}
   - {fileID: 330307119}
   - {fileID: 1460105995}
+  - {fileID: 217965612}
+  - {fileID: 1370476256}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -199,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35cd0fe6a1d6d64c81ea68404ce594a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameUIScript: {fileID: 0}
+  GameUIScript: {fileID: 2264730602578495836, guid: fbf441f63caa35a43aa2d39db81f07a9, type: 3}
   deathChunkParticle: {fileID: 932724624476624567, guid: 9bf579032181474489532b69efe3f9a6, type: 3}
   deathBloodParticle: {fileID: 4318460096445990408, guid: cb65512e1cde05a409eb849ff274015c, type: 3}
 --- !u!114 &9089507066385146808
@@ -214,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30eb15dc2904faf4d852fb580dbaf797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameUIScript: {fileID: 0}
+  GameUIScript: {fileID: 2264730602578495836, guid: fbf441f63caa35a43aa2d39db81f07a9, type: 3}
   knockbackDuration: 0.2
   knockbackSpeed: {x: 10, y: 5}
   amountOfJumps: 2
@@ -232,6 +296,10 @@ MonoBehaviour:
   jumpTimerSet: 0.15
   turnTimerSet: 0.1
   wallJumpTimerSet: 0.5
+  ledgeClimbXOffset1: 0
+  ledgeClimbXOffset2: 0
+  ledgeClimbXOffset3: 0
+  ledgeClimbXOffset4: 0
   dashTime: 0.25
   dashSpeed: 35
   distanceBetweenImages: 0.1
@@ -239,6 +307,11 @@ MonoBehaviour:
   wallHopDirection: {x: 1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
   groundCheck: {fileID: 9089507066658903771}
+  wallCheck: {fileID: 217965612}
+  ledgeCheck: {fileID: 1370476256}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &9089507066385146815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94aede5c3cc9f8b43a431733bd292e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameUIScript: {fileID: 0}
+  GameUIScript: {fileID: 2264730602578495836, guid: fbf441f63caa35a43aa2d39db81f07a9, type: 3}
   combatEnabled: 1
   inputTimer: 0.2
   attack1Radius: 0.8

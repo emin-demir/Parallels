@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 8152933908690785239}
-  player: {fileID: 0}
+  player: {fileID: 9089507066385146817, guid: 3c9a12d95a2aad247a2ce4db6d3c04be, type: 3}
   respawnTime: 5
 --- !u!1 &8152933908690785238
 GameObject:
