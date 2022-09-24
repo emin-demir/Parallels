@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public GameUIScript GameUIScript;
-
-
     private float movementInputDirection;
     private float jumpTimer;
     private float turnTimer;
@@ -52,8 +49,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     public int amountOfJumps = 2;
-    public int amountOfDash = 2;
-
+    public int amountOfDash = 2 ;
     public float movementSpeed = 10f;
     public float jumpforce = 16.0f;
     public float groundCheckRadius;
@@ -132,18 +128,17 @@ public class PlayerController : MonoBehaviour
         return isDashing;
     }
 
-    public void Knockback(int direction)
-    {
+    public void Knockback(int direction){
         knockback = true;
         KnockbackStartTime = Time.time;
         rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
     }
     private void CheckKnockback()
     {
-        if (Time.time >= KnockbackStartTime + knockbackDuration && knockback)
+        if(Time.time >= KnockbackStartTime + knockbackDuration && knockback)
         {
             knockback = false;
-            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+            rb.velocity = new Vector2(0.0f,rb.velocity.y);
         }
     }
     private void CheckLedgeClimb()
@@ -286,7 +281,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Dash"))
         {
-
             if (Time.time >= (lastDash + dashCoolDown) || amountOfDashLeft > 0)
             {
                 AttempToDash();
@@ -333,7 +327,7 @@ public class PlayerController : MonoBehaviour
                     lastImageXPos = transform.position.x;
                 }
             }
-            if (dashTimeLeft <= 0 || isTouchingWall)
+            if(dashTimeLeft <= 0 || isTouchingWall)
             {
                 isDashing = false;
                 canMove = true;

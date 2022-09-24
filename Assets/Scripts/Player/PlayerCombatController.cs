@@ -138,8 +138,6 @@ public class PlayerCombatController : MonoBehaviour
         foreach (Collider2D collider in detectedObjects)
         {
             collider.transform.parent.SendMessage("Damage", attackDetails);
-            CameraShake.Instance.ShakeCamera(3f, .2f);
-
         }
     }
     private void FinishAttack1()

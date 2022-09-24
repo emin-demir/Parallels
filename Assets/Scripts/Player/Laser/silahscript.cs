@@ -9,7 +9,7 @@ public class silahscript : MonoBehaviour
 
     
     public GameObject bullet;
-    public float bulletspeed;
+    public float bulletspeed = 1000f;
     public Transform shootpoint;
 
 
@@ -67,17 +67,15 @@ public class silahscript : MonoBehaviour
 
         if (RotateZ<89 && RotateZ>-89 || Input.GetKeyDown(KeyCode.A))
         {
-            Aim.transform.position = new Vector2(karakterkonum.x , karakterkonum.y + 0.45f);
+            Aim.transform.position = new Vector2(karakterkonum.x , karakterkonum.y + 1f);
             sr.flipY = false;
-            PCSR.flipX = false;
             gunSpriteRenderer.flipY = false;
         }
         
         else 
         {
-            Aim.transform.position = new Vector2(karakterkonum.x , karakterkonum.y + 0.45f);
+            Aim.transform.position = new Vector2(karakterkonum.x , karakterkonum.y + 1f);
             sr.flipY = true;
-            PCSR.flipX = true;
             gunSpriteRenderer.flipY = true;
         }
         

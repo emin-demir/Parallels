@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
+        CVC = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
     }
     private void Update()
     {
@@ -35,11 +35,10 @@ public class GameManager : MonoBehaviour
     }
     private void CheckRespawn()
     {
-        if (Time.time >= respawnTimeStart + respawnTime && respawn)
+        if (Time.time >= respawnTimeStart + 3)
         {
             var playerTemp = Instantiate(player, respawnPoint);
-            CVC.m_Follow = playerTemp.transform;
-            respawn = false;
+            Respawn();
         }
     }
 }
